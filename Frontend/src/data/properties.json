@@ -1,0 +1,26 @@
+[
+  {
+    "Id":1,
+    "Name":"Birla House",
+    "Type":"House",
+    "Price":198000
+  },
+    {
+    "Id":2,
+    "Name":"Aditya Birla House",
+    "Type":"Home",
+    "Price":167000
+  },
+    {
+    "Id":3,
+    "Name":"Birla Home",
+    "Type":"Apartment",
+    "Price":133000
+  },
+    {
+    "Id":4,
+    "Name":"Birla ",
+    "Type":"Guest House",
+    "Price":233000
+  }
+]
