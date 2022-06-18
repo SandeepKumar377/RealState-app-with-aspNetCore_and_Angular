@@ -1,18 +1,18 @@
 <div class="card shadow-lg">
   <div class="img-wrapper">
-    <img src="/assets/Images/House_default_img.png" class="card-img-top" alt="...">
+    <img src="/assets/Images/House_default_img.jpg" class="card-img-top" alt="...">
   </div>
   <div class="card-body">
     <h5 class="card-title">{{property.Name}}</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{property.Type}}</li>
-    <li class="list-group-item">{{property.Price}}</li>
+    <li class="list-group-item"><strong>Type : </strong>{{property.Type}}</li>
+    <li class="list-group-item"><strong>Price : </strong>{{property.Price}}</li>
+    <li class="list-group-item">
+      <a routerLink="/property-detail/{{property.Id}}" class="card-link btn btn-primary" role="button"><i class="far fa-edit"></i></a>
+      <a href="#" class="card-link btn btn-primary" role="button"><i class="far fa-address-book"></i></a>
+    </li>
   </ul>
-  <div class="card-body">
-    <a href="#" class="card-link btn btn-primary" role="button"><i class="far fa-edit"></i></a>
-    <a href="#" class="card-link btn btn-primary" role="button"><i class="far fa-address-book"></i></a>
-  </div>
 </div>
 
