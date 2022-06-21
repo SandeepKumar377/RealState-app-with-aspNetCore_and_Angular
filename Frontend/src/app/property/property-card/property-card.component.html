@@ -1,6 +1,7 @@
 <div class="card shadow-lg">
   <div class="img-wrapper">
-    <img src="/assets/Images/House_default_img.jpg" class="card-img-top" alt="...">
+    <img *ngIf="property.Image" src="/assets/Images/{{property.Image}}" class="card-img-top" alt="...">
+    <img *ngIf="!property.Image" src="/assets/Images/House_default_img.jpg" class="card-img-top" alt="...">
   </div>
   <div class="card-body">
     <h5 class="card-title">{{property.Name}}</h5>
