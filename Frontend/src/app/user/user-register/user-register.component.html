@@ -1,0 +1,73 @@
+<div class="col-lg-6 offset-3">
+    <div class="card">
+      <div class="card-header">
+          <h2>User Register</h2>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-3">
+            <label for="" class="form-label">Name</label>
+            <input type="text" class="form-control" formControlName="userName" placeholder="User name">
+            <span *ngIf="!userName.valid && userName.touched" class="error-msg">
+                Please enter name!
+            </span>
+          </div>
+          <div class="form-group mb-3">
+            <label for="" class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="User email">
+            <span *ngIf="!email.valid && email.touched" class="error-msg">
+                <span *ngIf="email.hasError('required')" class="error-msg">
+                    Please enter email!
+                </span>
+                <span *ngIf="email.hasError('email')" class="error-msg">
+                    Please enter valid email!
+                </span>
+            </span>
+          </div>
+          <div class="form-group mb-3">
+            <label for="" class="form-label">Mobile</label>
+            <input type="text" class="form-control"  formControlName="mobile" placeholder="User mobile">
+            <span *ngIf="!mobile.valid && mobile.touched" class="error-msg">
+                <span *ngIf="mobile.errors!['required']" class="error-msg">
+                    Please enter mobile number!
+                </span>
+                <span *ngIf="mobile.errors!['minlength']" class="error-msg">
+                    Please enter valid mobile number!
+                </span>
+            </span>
+          </div>
+          <div class="form-group mb-3">
+            <label for="" class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="password" placeholder="User password">
+            <span *ngIf="!password.valid && password.touched" class="error-msg">
+                <span *ngIf="password.errors!['required']" class="error-msg">
+                    Please enter password!
+                </span>
+                <span *ngIf="password.errors!['minlength']" class="error-msg">
+                    Password should not be lesser than 5 character!
+                </span>
+            </span>
+          </div>
+          <div class="form-group mb-3">
+            <label for="" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" formControlName="confirmPassword" placeholder="User confirm password">
+            <span *ngIf="!confirmPassword.valid && confirmPassword.touched" class="error-msg">
+                <span *ngIf="confirmPassword.errors!['required']" class="error-msg">
+                    Please enter confirm password!
+                </span>
+                <span *ngIf="registrationForm.hasError('notmatched') && confirmPassword.valid" class="error-msg">
+                    Confirm password not matched!
+                </span>
+            </span>
+          </div>
+          <div class="form-group mb-3">
+            <button type="submit" class="btn btn-primary m-3" placeholder="">Submit</button>
+            <button type="reset" class="btn btn-primary" placeholder="">Reset</button>
+          </div>
+          Form Values: {{registrationForm.value | json}} <br/>
+          Form Status: {{registrationForm.valid}}
+        </form>
+      </div>
+    </div>
+  </div>
+  
