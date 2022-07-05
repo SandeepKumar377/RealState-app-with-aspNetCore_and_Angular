@@ -8,14 +8,14 @@
           <div class="form-group mb-3">
             <label for="" class="form-label">Name</label>
             <input type="text" class="form-control" formControlName="userName" placeholder="User name">
-            <span *ngIf="!userName.valid && userName.touched" class="error-msg">
+            <span *ngIf="!userName.valid && (userName.touched || userSubmitted)" class="error-msg">
                 Please enter name!
             </span>
           </div>
           <div class="form-group mb-3">
             <label for="" class="form-label">Email</label>
             <input type="email" class="form-control" formControlName="email" placeholder="User email">
-            <span *ngIf="!email.valid && email.touched" class="error-msg">
+            <span *ngIf="!email.valid && (email.touched || userSubmitted)" class="error-msg">
                 <span *ngIf="email.hasError('required')" class="error-msg">
                     Please enter email!
                 </span>
@@ -27,7 +27,7 @@
           <div class="form-group mb-3">
             <label for="" class="form-label">Mobile</label>
             <input type="text" class="form-control"  formControlName="mobile" placeholder="User mobile">
-            <span *ngIf="!mobile.valid && mobile.touched" class="error-msg">
+            <span *ngIf="!mobile.valid && (mobile.touched || userSubmitted)" class="error-msg">
                 <span *ngIf="mobile.errors!['required']" class="error-msg">
                     Please enter mobile number!
                 </span>
@@ -39,7 +39,7 @@
           <div class="form-group mb-3">
             <label for="" class="form-label">Password</label>
             <input type="password" class="form-control" formControlName="password" placeholder="User password">
-            <span *ngIf="!password.valid && password.touched" class="error-msg">
+            <span *ngIf="!password.valid && (password.touched || userSubmitted)" class="error-msg">
                 <span *ngIf="password.errors!['required']" class="error-msg">
                     Please enter password!
                 </span>
@@ -51,7 +51,7 @@
           <div class="form-group mb-3">
             <label for="" class="form-label">Confirm Password</label>
             <input type="password" class="form-control" formControlName="confirmPassword" placeholder="User confirm password">
-            <span *ngIf="!confirmPassword.valid && confirmPassword.touched" class="error-msg">
+            <span *ngIf="!confirmPassword.valid && (confirmPassword.touched || userSubmitted)" class="error-msg">
                 <span *ngIf="confirmPassword.errors!['required']" class="error-msg">
                     Please enter confirm password!
                 </span>
@@ -64,8 +64,6 @@
             <button type="submit" class="btn btn-primary m-3" placeholder="">Submit</button>
             <button type="reset" class="btn btn-primary" placeholder="">Reset</button>
           </div>
-          Form Values: {{registrationForm.value | json}} <br/>
-          Form Status: {{registrationForm.valid}}
         </form>
       </div>
     </div>
