@@ -1,3 +1,4 @@
+import { AlertyfyService } from 'src/app/services/alertyfy.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  loggedInUser!:string;
+  constructor(private alertyfy: AlertyfyService) { }
 
   ngOnInit() {
+  }
+
+  loggedIn(){
+    this.loggedInUser = localStorage.getItem('token')!;
+    return this.loggedInUser;
+  }
+  onLogout(){
+    localStorage.removeItem('token');
+    this.alertyfy.success("Logout successful!");
   }
 
 }

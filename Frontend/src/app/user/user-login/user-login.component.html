@@ -1,1 +1,40 @@
-<p>user-login works!</p>
+<div class="col-lg-6 offset-3">
+    <div class="card">
+      <div class="card-header">
+          <h2>User Login</h2>
+      </div>
+      <div class="card-body">
+        <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+          <div class="form-group mb-3">
+            <label for="" class="form-label">Email</label>
+            <input type="email" class="form-control" ngModel name="email" placeholder="User email">
+            <span class="error-msg">
+                <span class="error-msg">
+                    Please enter email!
+                </span>
+                <span class="error-msg">
+                    Please enter valid email!
+                </span>
+            </span>
+          </div>
+          <div class="form-group mb-3">
+            <label for="" class="form-label">Password</label>
+            <input type="password" class="form-control" ngModel name="password" placeholder="User password">
+            <span class="error-msg">
+                <span class="error-msg">
+                    Please enter password!
+                </span>
+                <span class="error-msg">
+                    Password should not be lesser than 5 character!
+                </span>
+            </span>
+          </div>
+          <div class="form-group mb-3">
+            <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary m-3" placeholder="">Login</button>
+            <button type="reset" class="btn btn-primary" placeholder="">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

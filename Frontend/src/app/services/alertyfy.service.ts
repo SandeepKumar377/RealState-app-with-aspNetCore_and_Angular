@@ -10,7 +10,7 @@ export class AlertyfyService {
     constructor() { }
 
     success(message: string){
-        alertify.scuccess(message);
+        alertify.success(message);
     }
     warning(message: string){
         alertify.warning(message);
