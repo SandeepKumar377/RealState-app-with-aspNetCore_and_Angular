@@ -4,13 +4,13 @@
     <img *ngIf="!property.Image" src="/assets/Images/House_default_img.jpg" class="card-img-top" alt="...">
   </div>
   <div class="card-body">
-    <h3 class="card-title">{{property.Name}}</h3>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h2 class="card-title">{{property.BHK}} BHK {{property.PType}}</h2>
+    in {{property.Name}}<strong *ngIf="property.Name"> , </strong>{{property.City}}
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><strong>Type : </strong>{{property.Type}}</li>
-    <li class="list-group-item"><strong>Price : </strong>{{property.Price}}</li>
-    <li class="list-group-item">
+    <li class="list-group-item"><strong>Price: </strong>{{property.Price}} USD <strong>| Area: </strong> {{property.BuiltArea}} Sqr Feet.</li>
+    <li class="list-group-item">{{property.FType}} <span *ngIf="property.FType !== 'Unfurnished'">Furnished</span> <strong> | </strong>Ready to move</li>
+    <li *ngIf="!hideIcons" class="list-group-item">
       <a routerLink="/property-detail/{{property.Id}}" class="card-link btn btn-primary" role="button"><i class="far fa-edit"></i></a>
       <a href="#" class="card-link btn btn-primary" role="button"><i class="far fa-address-book"></i></a>
     </li>

@@ -1,29 +1,26 @@
 <div class="row col-lg-12">
-  <div class="col-lg-8">
+  <div class="col-lg-8 shadow-lg p-0">
     <div class="card">
       <div class="card-header">
           <h2>Add new property</h2>
       </div>
       <div class="card-body">
-        <form (ngSubmit)='onSubmit()' #Form="ngForm">
-  
-          <div>
-            <tabset #formTabs>
-              <tab heading="Basic Info">
+        <form (ngSubmit)='onSubmit()' #Form="ngForm">  
+          <div class="tab-panel">
+            <tabset class="member-tabset" #formTabs>
+              <tab heading="Basic Info" ngModelGroup="BasicInfo" #BasicInfo="ngModelGroup">
                 <div class="form-group mb-3">
                   <p>I want to </p>
-                  <div class="btn-group" btnRadioGroup>
+                  <div class="btn-group" btnRadioGroup ngModel name="SellRent" required>
                     <label class="btn btn-outline-primary" btnRadio="1" tabindex="0" role="button" name="SellRent">Sell</label>
                     <label class="btn btn-outline-primary" btnRadio="2" tabindex="0" role="button" name="SellRent">Rent</label>
                   </div>
                 </div>           
                 <div class="form-group mb-3">
                   <p>BHK</p>
-                  <div class="btn-group" btnRadioGroup>
+                  <div class="btn-group" btnRadioGroup [(ngModel)]="propertyView.BHK" name="BHK">
                     <!-- <label *ngFor="let bhk of bhkType" class="btn btn-outline-primary" [btnRadio]!="bhk" tabindex="0" role="button" 
-                    name="SellRent">
-                    {{bhk}}
-                  </label> -->
+                      name="BHK">{{bhk}}</label> -->
                   <label class="btn btn-outline-primary" btnRadio="1" tabindex="0" role="button" name="BHk">1 BHK</label>
                   <label class="btn btn-outline-primary" btnRadio="2" tabindex="0" role="button" name="BHK">2 BHK</label>
                   <label class="btn btn-outline-primary" btnRadio="3" tabindex="0" role="button" name="BHK">3 BHK</label>
@@ -32,7 +29,7 @@
                 </div>           
                 <div class="form-group mb-3">
                   <p>Property Type</p>
-                  <div class="btn-group" btnRadioGroup name="Type" [(ngModel)]="propertyView.Type" >
+                  <div class="btn-group" btnRadioGroup name="Type" [(ngModel)]="propertyView.PType">
                     <label *ngFor="let proptyp of propertyTypes" class="btn btn-outline-primary"
                      [btnRadio]="proptyp" tabindex="0" role="button" 
                     name="SellRent">
@@ -42,10 +39,10 @@
                 </div>           
                 <div class="form-group mb-3">
                   <p>Furnishing Type</p>
-                  <div class="btn-group" btnRadioGroup>
-                    <label *ngFor="let furtyp of furnishTypes" class="btn btn-outline-primary" [btnRadio]="furtyp" tabindex="0" role="button" 
+                  <div class="btn-group" btnRadioGroup [(ngModel)]="propertyView.FType" name="FType">
+                    <label *ngFor="let ftype of furnishTypes" class="btn btn-outline-primary" [btnRadio]="ftype" tabindex="0" role="button" 
                     name="SellRent">
-                    {{furtyp}}
+                    {{ftype}}
                   </label>
                   </div>
                 </div>           
@@ -57,11 +54,11 @@
                   <span class="error-msg">Please enter name!</span>
                 </div>
                 <div class="form-group mb-3">
-                  <label class="form-label">City</label>
-                  <input type="text" class="form-control" placeholder="">
+                  <label class="form-label" >City</label>
+                  <input type="text" class="form-control" [(ngModel)]="propertyView.City" name="City" placeholder="">
                 </div>
                 <div class="form-group mb-3">
-                  <button type="button" class="btn btn-primary m-3 btn-block" (click)="selectTab(1)">Next</button>
+                  <button type="button" [disabled]="!BasicInfo.valid" class="btn btn-primary m-3 btn-block" (click)="selectTab(1)">Next</button>
                   <!-- <button type="reset" class="btn btn-primary">Reset</button> -->
                 </div>            
               </tab>
@@ -81,7 +78,7 @@
                 </div>
                 <div class="form-group mb-3">
                   <label class="form-label">Built Area (in sqr feet)</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" [(ngModel)]="propertyView.BuiltArea" name="BuiltArea">
                 </div>
                 <div class="form-group mb-3">
                   <label class="form-label">Carpet Area (in sqr feet)</label>
@@ -159,20 +156,18 @@
                 <button type="button" class="btn btn-primary m-3 btn-block" (click)="selectTab(3)">Back</button>
               </tab>
             </tabset>
-          </div>
-  
-         
+          </div>         
         </form>
       </div>
     </div>
   </div>
   
-  <div class="col-lg-4">
+  <div class="col-lg-4 ">
     <div class="card-header">
       <h2>Property View</h2>
-      <div>
-        <app-property-card [property]="propertyView"></app-property-card>
-      </div>
+    </div>
+    <div>
+        <app-property-card [property]="propertyView" [hideIcons]="true"></app-property-card>
     </div>
   </div>
 </div>
