@@ -8,7 +8,9 @@
     in {{property.Name}}<strong *ngIf="property.Name"> , </strong>{{property.City}}
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><strong>Price: </strong>{{property.Price}} USD <strong>| Area: </strong> {{property.BuiltArea}} Sqr Feet.</li>
+    <li class="list-group-item">
+      <strong>Price: </strong><span class="font-highlight">{{property.Price}} USD </span>
+      <strong>| Area: </strong> <span class="font-highlight">{{property.BuiltArea}} Sqr Feet.</span></li>
     <li class="list-group-item">{{property.FType}} <span *ngIf="property.FType !== 'Unfurnished'">Furnished</span> <strong> | </strong>Ready to move</li>
     <li *ngIf="!hideIcons" class="list-group-item">
       <a routerLink="/property-detail/{{property.Id}}" class="card-link btn btn-primary" role="button"><i class="far fa-edit"></i></a>
