@@ -23,7 +23,7 @@
     "Gated":1,
     "Security":0,
     "Maintenance":300,
-    "Posession":"Ready to move",
+    "Possession":"Ready to move",
     "PostedOn":"01-Aug-2022"
   },
   {
@@ -50,7 +50,7 @@
     "Gated":1,
     "Security":0,
     "Maintenance":300,
-    "Posession":"Ready to move",
+    "Possession":"Ready to move",
     "PostedOn":"01-Aug-2022"    
   },
   {
@@ -77,7 +77,7 @@
     "Gated":1,
     "Security":2,
     "Maintenance":500,
-    "Posession":"Ready to move",
+    "Possession":"Ready to move",
     "PostedOn":"01-Des-2022"
   },
   {
@@ -103,7 +103,7 @@
     "Gated":1,
     "Security":1,
     "Maintenance":500,
-    "Posession":"Ready to move",
+    "Possession":"Ready to move",
     "PostedOn":"01-Sep-2022"
   }
 ]
