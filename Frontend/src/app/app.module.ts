@@ -25,6 +25,8 @@ import { UserServiceService } from './services/user-service.service';
 import { AlertyfyService } from './services/alertyfy.service';
 import { AuthServiceService } from './services/auth-service.service';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { FilterPipe } from './pipes/filter.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 const appRoutes: Routes=[
   {path:'', component: PropertyListComponent},
@@ -47,7 +49,9 @@ const appRoutes: Routes=[
     PropertyDetailComponent,
     PropertyDetailComponent,
     UserLoginComponent,
-    UserRegisterComponent,    
+    UserRegisterComponent,
+    FilterPipe,
+    SortPipe,    
    ],
   imports: [
     BrowserModule,
