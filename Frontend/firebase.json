@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/real-state-app-with-asp-net-core",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
