@@ -60,7 +60,10 @@
                 </div>
                 <div class="form-group mb-3">
                   <label class="form-label" >City</label>
-                  <input type="text" class="form-control" [(ngModel)]="propertyView.City" formControlName="City" placeholder="">
+                  <select class="form-control" [(ngModel)]="propertyView.City" formControlName="City">
+                    <option value="">Please select city...</option>
+                    <option *ngFor="let city of cityList" value={{city.id}}>{{city.name}}</option>
+                  </select>
                   <div>
                     <span class="error-msg" *ngIf="City.invalid && (nextClicked || City.touched)">Please enter city!</span>
                   </div>
