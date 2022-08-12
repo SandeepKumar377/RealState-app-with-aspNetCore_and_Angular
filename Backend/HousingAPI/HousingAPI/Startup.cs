@@ -33,6 +33,7 @@ namespace HousingAPI
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddControllers();
             services.AddCors();
+            services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HousingAPI", Version = "v1" });
