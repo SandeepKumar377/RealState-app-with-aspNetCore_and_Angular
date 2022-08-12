@@ -1,9 +1,12 @@
 ﻿using HousingAPI.DataContext;
+using HousingAPI.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace HousingAPI.Controllers
 {
@@ -11,15 +14,16 @@ namespace HousingAPI.Controllers
     [ApiController]
     public class CityController : ControllerBase
     {
-        private readonly HousingDataContext _housingDataContext;
+        private readonly ICityRepository _cityRepository;
 
-        public CityController(HousingDataContext housingDataContext)
+        public CityController(ICityRepository cityRepository)
         {
-            _housingDataContext = housingDataContext;
+            _cityRepository = cityRepository;
         }
-        public IActionResult GetCity()
+        [HttpGet]
+        public async Task<IActionResult> GetCity()
         {
-            var cities = _housingDataContext.Cities.ToList();
+            var cities = await _cityRepository.GetAllCity();
             return Ok(cities);
         }
     }

@@ -1,4 +1,6 @@
 using HousingAPI.DataContext;
+using HousingAPI.Interface;
+using HousingAPI.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +30,7 @@ namespace HousingAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<HousingDataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultString")));
+            services.AddScoped<ICityRepository, CityRepository>();
             services.AddControllers();
             services.AddCors();
             services.AddSwaggerGen(c =>
