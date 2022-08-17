@@ -3,6 +3,7 @@ using HousingAPI.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace HousingAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCity()
         {
+            throw new UnauthorizedAccessException();
             var cities = await _cityRepository.GetAllCity();
             return Ok(cities);
         }
