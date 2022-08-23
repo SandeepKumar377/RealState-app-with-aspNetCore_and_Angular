@@ -12,12 +12,12 @@ namespace HousingAPI.Repository
 {
     public class CityRepository : ICityRepository
     {
-        private readonly HousingDataContext _housingDataContext;
+        private readonly HousingDataContext _context;
         private readonly IMapper _mapper;
 
-        public CityRepository(HousingDataContext housingDataContext, IMapper mapper)
+        public CityRepository(HousingDataContext context, IMapper mapper)
         {
-            _housingDataContext = housingDataContext;
+            _context = context;
             _mapper = mapper;
         }
         public async Task<IEnumerable<CityDTO>> GetAllCity()
@@ -30,7 +30,7 @@ namespace HousingAPI.Repository
 
             //Using AutoMapper
 
-            var result = await _housingDataContext.Cities.ToListAsync();
+            var result = await _context.Cities.ToListAsync();
             return _mapper.Map<IEnumerable<CityDTO>>(result);
         }
     }

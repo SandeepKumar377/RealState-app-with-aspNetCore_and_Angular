@@ -15,17 +15,16 @@ namespace HousingAPI.Controllers
     [ApiController]
     public class CityController : ControllerBase
     {
-        private readonly ICityRepository _cityRepository;
+        private readonly ICityRepository _cityRepo;
 
-        public CityController(ICityRepository cityRepository)
+        public CityController(ICityRepository cityRepo)
         {
-            _cityRepository = cityRepository;
+            _cityRepo = cityRepo;
         }
-        [HttpGet]
+        [HttpGet("City")]
         public async Task<IActionResult> GetCity()
         {
-            throw new UnauthorizedAccessException();
-            var cities = await _cityRepository.GetAllCity();
+            var cities = await _cityRepo.GetAllCity();
             return Ok(cities);
         }
     }

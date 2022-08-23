@@ -1,24 +1,14 @@
 using HousingAPI.DataContext;
 using HousingAPI.Extensions;
 using HousingAPI.Interface;
-using HousingAPI.Middlewares;
 using HousingAPI.Repository;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
 
 namespace HousingAPI
 {
@@ -36,6 +26,7 @@ namespace HousingAPI
         {
             services.AddDbContext<HousingDataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultString")));
             services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddControllers();
             services.AddCors();
             services.AddAutoMapper(typeof(Startup));

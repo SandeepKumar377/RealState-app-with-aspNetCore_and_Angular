@@ -7,5 +7,6 @@ namespace HousingAPI.DataContext
     {
         public HousingDataContext(DbContextOptions<HousingDataContext> options) : base(options) { }
         public DbSet<City> Cities { get; set; }
+        public DbSet<UserRegister> Users { get; set; }
     }
 }
