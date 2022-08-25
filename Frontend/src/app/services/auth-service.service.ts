@@ -1,16 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from "../../environments/environment";
+import { UserLogin } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
 
-constructor() { }
-  authUser(token: any){
-    let UserArray =[];
-    if(localStorage.getItem('Users')){
-      UserArray= JSON.parse(localStorage.getItem('Users')!);
-    }
-    return UserArray.find((p: { email: string; password: string; })=>p.email===token.email && p.password===token.password);
+baseURL=environment.baseURL;
+constructor(private http: HttpClient) { }
+
+  public authUser(user: UserLogin):Observable<UserLogin>{
+    return this.http.post<UserLogin>(this.baseURL+'/Account/Login', user);    
   }
+
 }

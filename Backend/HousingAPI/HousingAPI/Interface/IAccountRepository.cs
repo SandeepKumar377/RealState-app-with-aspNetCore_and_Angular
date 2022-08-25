@@ -8,6 +8,6 @@ namespace HousingAPI.Interface
     {
         Task<UserRegister> SignUp(UserRegisterDto userRegisterDto);
         Task<bool> UserExist(string email);
-        Task<bool> Login(UserLoginDto userLoginDto);
+        Task<UserRegister> Login(UserLoginDto userLoginDto);
     }
 }

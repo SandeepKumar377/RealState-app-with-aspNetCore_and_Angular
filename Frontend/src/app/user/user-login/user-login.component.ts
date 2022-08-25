@@ -1,8 +1,9 @@
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { AlertyfyService } from 'src/app/services/alertyfy.service';
+import { UserLogin } from 'src/app/model/user';
 
 @Component({
   selector: 'app-user-login',
@@ -19,17 +20,26 @@ export class UserLoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
   onLogin(loginForm: NgForm){
-    // console.log(loginForm.value);
-    const token= this.authService.authUser(loginForm.value);
-    if (token) {
-      localStorage.setItem('token', token.email);
-      this.alertyfy.success('Login Successful!');
-      this.router.navigate(['/']);
-    }
-    else{      
-      this.alertyfy.error('Login not Successful!');
-    }
+    console.log(loginForm.value);
+    this.authService.authUser(loginForm.value).subscribe(
+      (responce: UserLogin)=>{
+        const user=responce;
+        if (user) {
+          console.log(user);
+          localStorage.setItem('token', user.token);          
+          localStorage.setItem('userName', user.userName);
+          this.router.navigate(['/']);
+          this.alertyfy.success('Login Successful!!!');
+        }
+      },
+      (error)=>{
+        console.log(error);
+        this.alertyfy.error(error.error);
+      }
+      );
   }
 
 }

@@ -21,7 +21,7 @@
           <li *ngIf="!loggedIn()" class="nav-item"><a class="nav-link" routerLink="user-register" routerLinkActive="active">Register</a></li>
           <li *ngIf="!loggedIn()" class="nav-item"><a class="nav-link" routerLink="user-login" routerLinkActive="active">Login</a></li>
           <!-- <li *ngIf="loggedIn()" class="nav-item"><a class="nav-link" (click)="onLogout()" >Logout</a></li> -->
-          <div *ngIf="loggedIn()" dropdown class="dropdown" style="margin-right: 10px">
+          <div *ngIf="loggedIn()" dropdown class="dropdown" style="margin-right: 20px">
             <a href="#" dropdownToggle (click)="false" class="dropdown-toggle text-light">
              Hi {{loggedInUser}}
             </a>

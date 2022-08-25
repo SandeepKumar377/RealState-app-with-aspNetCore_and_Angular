@@ -40,12 +40,17 @@ namespace HousingAPI.Middlewares
                 if (exceptionType == typeof(UnauthorizedAccessException))
                 {
                     statusCode = HttpStatusCode.Forbidden;
-                    message = "You are not authorized!";
+                    message = "You are not authorized!!";
+                } 
+                else if(exceptionType== typeof(BadHttpRequestException))
+                {
+                    statusCode = HttpStatusCode.BadRequest;
+                    message = "Invalid credentials!!";
                 }
                 else
                 {
                     statusCode = HttpStatusCode.InternalServerError;
-                    message = "Some unknown error occoured!";
+                    message = "Some unknown error occoured!!";
                 }
 
                 if (_env.IsDevelopment())

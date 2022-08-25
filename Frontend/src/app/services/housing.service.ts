@@ -1,20 +1,20 @@
-import { IProperty } from './../model/iProperty';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { IPropertyBase } from '../model/iPropertyBase';
 import { Property } from '../model/property';
+import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class HousingService {
 
+  baseURL=environment.baseURL;
   constructor(private http: HttpClient) { }
 
   getAllCities() : Observable<any>{
-    return this.http.get('http://localhost:27779/api/city');
+    return this.http.get(this.baseURL+'/city/cities');
   }
 
   getProperty(id:number){

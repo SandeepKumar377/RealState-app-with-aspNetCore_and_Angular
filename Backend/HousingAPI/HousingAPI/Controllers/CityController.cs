@@ -21,7 +21,7 @@ namespace HousingAPI.Controllers
         {
             _cityRepo = cityRepo;
         }
-        [HttpGet("City")]
+        [HttpGet("Cities")]
         public async Task<IActionResult> GetCity()
         {
             var cities = await _cityRepo.GetAllCity();

@@ -33,12 +33,12 @@ namespace HousingAPI.Repository
             return user;
         }
 
-        public async Task<bool> Login(UserLoginDto userLoginDto)
+        public async Task<UserRegister> Login(UserLoginDto userLoginDto)
         {
-            var user= await _context.Users.FirstOrDefaultAsync(x=>x.Email==userLoginDto.Mail);
+            var user= await _context.Users.FirstOrDefaultAsync(x=>x.Email==userLoginDto.Email);
             if (user==null)
             {
-                return false;
+                return null;
             }
             //verify Hash Password for login user
             using (var hmac = new HMACSHA512(user.PasswordSalt))
@@ -48,11 +48,11 @@ namespace HousingAPI.Repository
                 {
                     if (computedHash[i] != user.Password[i])
                     {
-                        return false;
+                        return null;
                     }
                 }
             }
-            return true;
+            return user;
         }
         
         public async Task<bool> UserExist(string email)

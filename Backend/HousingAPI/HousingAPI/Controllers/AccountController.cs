@@ -24,21 +24,24 @@ namespace HousingAPI.Controllers
         {
             if (await _accountRepo.UserExist(userRegisterDto.Email))
             {
-                return BadRequest("User already exist");
+                return BadRequest("User already exist!");
             }
             var result = await _accountRepo.SignUp(userRegisterDto);
             return Created("~api/Account/Register", new { result });
         }
 
         [HttpPost("Login")]
-        public async Task<ActionResult<UserLoginDto>> UserLogin(UserLoginDto userLoginDto)
+        public async Task<ActionResult<UserLoginDto>> UserLogin([FromBody]UserLoginDto userLoginDto)
         {
             var result = await _accountRepo.Login(userLoginDto);
-            if (result==false)
+            if (result==null)
             {
-                return BadRequest("Invalid credentails!");
+                return Unauthorized("Invalid credentails!");
             }
-            return Ok();
+            var user = new UserRegisterDto();
+            user.Email= result.Email;
+            user.UserName= result.UserName;
+            return Ok(user);
         }
     }
 }
