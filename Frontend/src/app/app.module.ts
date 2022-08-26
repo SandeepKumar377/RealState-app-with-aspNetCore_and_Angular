@@ -1,7 +1,7 @@
 import { PropertyDetailResolverService } from './property/property-detail/property-detail-resolver.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import {Routes, RouterModule} from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -26,6 +26,7 @@ import { AuthServiceService } from './services/auth-service.service';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { HttpErrorIntercepterService } from './services/httperror-intercepter.service';
 
 const appRoutes: Routes=[
   {path:'', component: PropertyListComponent},
@@ -67,6 +68,11 @@ const appRoutes: Routes=[
     NgxGalleryModule,
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorIntercepterService,
+      multi: true
+    },
     HousingService,
     AlertyfyService,
     AuthServiceService,

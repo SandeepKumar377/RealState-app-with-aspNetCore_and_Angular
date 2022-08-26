@@ -34,12 +34,7 @@ export class UserLoginComponent implements OnInit {
           this.router.navigate(['/']);
           this.alertyfy.success('Login Successful!!!');
         }
-      },
-      (error)=>{
-        console.log(error);
-        this.alertyfy.error(error.error);
-      }
-      );
+      });
   }
 
 }
