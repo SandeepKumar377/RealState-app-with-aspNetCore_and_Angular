@@ -21,7 +21,6 @@ import { PropertyDetailComponent } from './property/property-detail/property-det
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
-import { UserServiceService } from './services/user-service.service';
 import { AlertyfyService } from './services/alertyfy.service';
 import { AuthServiceService } from './services/auth-service.service';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
@@ -69,7 +68,6 @@ const appRoutes: Routes=[
   ],
   providers: [
     HousingService,
-    UserServiceService,
     AlertyfyService,
     AuthServiceService,
     PropertyDetailResolverService

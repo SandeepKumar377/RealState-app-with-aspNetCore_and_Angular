@@ -7,26 +7,16 @@
         <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
           <div class="form-group mb-3">
             <label for="" class="form-label">Email</label>
-            <input type="text" class="form-control" required ngModel name="email" placeholder="User email">
-            <span class="error-msg">
-                <span class="error-msg">
-                    Please enter email!
-                </span>
-                <span class="error-msg">
-                    Please enter valid email!
-                </span>
+            <input type="email" class="form-control" required ngModel name="email" placeholder="User email">
+            <span *ngIf="!loginForm.value.email" class="error-msg">                
+              Please enter email!
             </span>
           </div>
           <div class="form-group mb-3">
             <label for="" class="form-label">Password</label>
             <input type="password" class="form-control" required ngModel name="password" placeholder="User password">
-            <span class="error-msg">
-                <span class="error-msg">
-                    Please enter password!
-                </span>
-                <span class="error-msg">
-                    Password should not be lesser than 5 character!
-                </span>
+            <span  *ngIf="!loginForm.value.password" class="error-msg">
+              Please enter password!
             </span>
           </div>
           <div class="form-group mb-3">

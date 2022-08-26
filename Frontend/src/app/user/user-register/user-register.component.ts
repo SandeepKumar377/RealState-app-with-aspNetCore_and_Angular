@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/model/user';
-import { UserServiceService } from 'src/app/services/user-service.service';
+import { UserRegister } from 'src/app/model/user';
 import { AlertyfyService } from 'src/app/services/alertyfy.service';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-user-register',
@@ -13,24 +13,17 @@ export class UserRegisterComponent implements OnInit {
 
   registrationForm!: FormGroup;
 
-  user!:User;
+  user!:UserRegister;
 
   userSubmitted!:boolean;
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserServiceService,
+    private authService: AuthServiceService,
     private alertyfy: AlertyfyService
   ) { }
 
   ngOnInit(): void {
-    // this.registrationForm= new FormGroup({
-    //   userName: new FormControl(null, Validators.required),
-    //   mobile: new FormControl(null, [Validators.required, Validators.minLength(10)]),
-    //   email: new FormControl(null, [Validators.required, Validators.email]),
-    //   password: new FormControl(null, [Validators.required, Validators.minLength(5)]),
-    //   confirmPassword: new FormControl(null, [Validators.required, Validators.minLength(5)])
-    // });
     this.createRegisterationForm();
   }
 
@@ -40,7 +33,7 @@ export class UserRegisterComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(5)]],
       confirmPassword: [null, Validators.required],
-      mobile: [null, [Validators.required, Validators.maxLength(10)]],
+      mobile: [null],
     },{Validators: this.passwordMatchingValidator})
   }
 
@@ -68,21 +61,29 @@ export class UserRegisterComponent implements OnInit {
       this.userSubmitted=true;
       if (this.registrationForm.valid) {        
         // this.user=Object.assign(this.user, this.registrationForm.value);
-        this.userService.addUser(this.userData());
-        this.registrationForm.reset();
-        this.userSubmitted=false;
-        this.alertyfy.success("User register successfully!");
-      }else
-      {
-        this.alertyfy.error("Please enter required field!");
+        this.authService.registerUser(this.userData()).subscribe(()=>
+        {
+          this.onReset();
+          this.alertyfy.success("Register successfully");
+        }, error=>{
+          console.log(error);
+          this.alertyfy.error(error.error);
+        });
       }
     }
-    userData():User{
+
+    onReset(){
+      this.userSubmitted=false;
+      this.registrationForm.reset();
+    }
+
+    userData():UserRegister{
       return this.user={
         userName:this.userName.value,
         email:this.email.value,
         mobile:this.mobile.value,
         password:this.password.value,
+        confirmPassword:this.confirmPassword.value
       }
     }
   }
