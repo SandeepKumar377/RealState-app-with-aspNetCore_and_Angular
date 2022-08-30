@@ -17,10 +17,10 @@ namespace HousingAPI.Repository
         {
             _context = context;
         }
-        public async Task<UserRegister> SignUp(UserRegisterDto userRegisterDto)
+        public async Task<User> SignUp(UserRegisterDto userRegisterDto)
         {
             using var hmac = new HMACSHA512(); // convert password into Hash (algorithm)  
-            var user = new UserRegister() 
+            var user = new User() 
             { 
                 UserName = userRegisterDto.UserName.ToLower(),
                 Email = userRegisterDto.Email.ToLower(),
@@ -33,7 +33,7 @@ namespace HousingAPI.Repository
             return user;
         }
 
-        public async Task<UserRegister> Login(UserLoginDto userLoginDto)
+        public async Task<User> Login(UserLoginDto userLoginDto)
         {
             var user= await _context.Users.FirstOrDefaultAsync(x=>x.Email==userLoginDto.Email);
             if (user==null)

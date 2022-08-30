@@ -6,8 +6,8 @@ namespace HousingAPI.Interface
 {
     public interface IAccountRepository
     {
-        Task<UserRegister> SignUp(UserRegisterDto userRegisterDto);
+        Task<User> SignUp(UserRegisterDto userRegisterDto);
         Task<bool> UserExist(string email);
-        Task<UserRegister> Login(UserLoginDto userLoginDto);
+        Task<User> Login(UserLoginDto userLoginDto);
     }
 }
