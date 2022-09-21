@@ -31,22 +31,6 @@ export class PropertyDetailComponent implements OnInit {
         this.property=data['prp'];
       }
     );
-    // this.route.params.subscribe(
-    //   (params)=>{
-    //     this.propertyId= +params['id'];
-    //     this.housingService.getProperty(this.propertyId).subscribe(
-    //       (data:any)=>{
-    //         console.log(data)
-    //         this.property=data;
-    //       },error=>{
-    //         this.router.navigate(['/']);
-    //         console.log('httpError');
-    //         console.log(error);
-    //       }
-    //     );
-    //   }
-    // );
-
     this.galleryOptions = [
       {
         width: '100%',

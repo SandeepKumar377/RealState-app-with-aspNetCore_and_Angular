@@ -16,7 +16,7 @@ namespace HousingAPI.Controllers
             _propertyRepository = propertyRepository;
         }
 
-        [HttpGet("type/{sellRent}")]
+        [HttpGet("list/{sellRent}")]
         public async Task<IActionResult> GetPropertyList(int sellRent)
         {
             var propertyList= await _propertyRepository.GetProperties(sellRent);

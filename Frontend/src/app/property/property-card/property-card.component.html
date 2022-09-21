@@ -1,19 +1,19 @@
 <div class="card shadow-lg">
   <div class="img-wrapper">
-    <img *ngIf="property.Image" src="/assets/Images/{{property.Image}}" class="card-img-top" alt="...">
-    <img *ngIf="!property.Image" src="/assets/Images/House_default_img.jpg" class="card-img-top" alt="...">
+    <img *ngIf="property.image" src="/assets/Images/{{property.image}}" class="card-img-top" alt="...">
+    <img *ngIf="!property.image" src="/assets/Images/House_default_img.jpg" class="card-img-top" alt="...">
   </div>
   <div class="card-body">
-    <h2 class="card-title">{{property.BHK}} BHK {{property.PType}}</h2>
-    in {{property.Name}}<strong *ngIf="property.Name"> , </strong>{{property.City}}
+    <h2 class="card-title">{{property.bhk}} BHK {{property.propertyType}}</h2>
+    in {{property.name}}<strong *ngIf="property.name"> , </strong>{{property.cityName}}
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
-      <strong>Price: </strong><span class="font-highlight">{{property.Price}} USD </span>
-      <strong>| Area: </strong> <span class="font-highlight">{{property.BuiltArea}} Sqr Feet.</span></li>
-    <li class="list-group-item">{{property.FType}} <span *ngIf="property.FType !== 'Unfurnished'">Furnished</span> <strong> | </strong>Ready to move</li>
+      <strong>Price: </strong><span class="font-highlight">{{property.price}} USD </span>
+      <strong>| Area: </strong> <span class="font-highlight">{{property.builtArea}} Sqr Feet.</span></li>
+    <li class="list-group-item">{{property.furnishingType}} <span *ngIf="property.furnishingType !== 'Unfurnished'">Furnished</span> <strong> | </strong>Ready to move</li>
     <li *ngIf="!hideIcons" class="list-group-item">
-      <a routerLink="/property-detail/{{property.Id}}" class="card-link btn btn-primary" role="button"><i class="far fa-edit"></i></a>
+      <a routerLink="/property-detail/{{property.id}}" class="card-link btn btn-primary" role="button"><i class="far fa-edit"></i></a>
       <a href="#" class="card-link btn btn-primary" role="button"><i class="far fa-address-book"></i></a>
     </li>
   </ul>

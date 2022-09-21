@@ -18,7 +18,7 @@
                 </div>           
                 <div class="form-group mb-3">
                   <p>BHK</p>
-                  <div class="btn-group" btnRadioGroup [(ngModel)]="propertyView.BHK" formControlName="BHK">
+                  <div class="btn-group" btnRadioGroup [(ngModel)]="propertyView.bhk" formControlName="BHK">
                     <label *ngFor="let bhk of bhkType" class="btn btn-outline-primary" 
                     [btnRadio]="bhk" tabindex="0" role="button" name="BHK">{{bhk}}</label>
                   </div>
@@ -28,7 +28,7 @@
                 </div>           
                 <div class="form-group mb-3">
                   <p>Property Type</p>
-                  <div class="btn-group" btnRadioGroup formControlName="PType" [(ngModel)]="propertyView.PType">
+                  <div class="btn-group" btnRadioGroup formControlName="propertyType" [(ngModel)]="propertyView.propertyType">
                     <label *ngFor="let proptyp of propertyTypes" class="btn btn-outline-primary"
                      [btnRadio]="proptyp" tabindex="0" role="button" 
                     name="SellRent">{{proptyp}}</label>
@@ -39,7 +39,7 @@
                 </div>           
                 <div class="form-group mb-3">
                   <p>Furnishing Type</p>
-                  <div class="btn-group" btnRadioGroup [(ngModel)]="propertyView.FType" formControlName="FType">
+                  <div class="btn-group" btnRadioGroup [(ngModel)]="propertyView.furnishingType" formControlName="FType">
                     <label *ngFor="let ftype of furnishTypes" class="btn btn-outline-primary" [btnRadio]="ftype" tabindex="0" role="button" 
                     name="SellRent">
                     {{ftype}}
@@ -52,7 +52,7 @@
                 <div class="form-group mb-3">
                   <label for="" class="form-label">In Building/Society/Project</label>
                   <input type="text" class="form-control" formControlName="Name" minlength="4"
-                  [(ngModel)]="propertyView.Name"
+                  [(ngModel)]="propertyView.name"
                   placeholder="">
                   <div>
                     <span class="error-msg" *ngIf="Name.invalid && (nextClicked || Name.touched)">Please enter name!</span>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="form-group mb-3">
                   <label class="form-label" >City</label>
-                  <select class="form-control" [(ngModel)]="propertyView.City" formControlName="City">
+                  <select class="form-control" [(ngModel)]="propertyView.cityName" formControlName="City">
                     <option value="">Please select city...</option>
                     <option *ngFor="let city of cityList" value={{city.id}}>{{city.name}}</option>
                   </select>
@@ -77,7 +77,7 @@
                 <div class="form-group mb-3">
                   <label class="form-label" *ngIf="SellRent.value==1">Price (in USD)</label>
                   <label class="form-label" *ngIf="SellRent.value==2">Rent (in USD)</label>
-                  <input type="text" class="form-control" formControlName="Price" [(ngModel)]="propertyView.Price">
+                  <input type="text" class="form-control" formControlName="Price" [(ngModel)]="propertyView.price">
                   <span class="error-msg" *ngIf="Price.invalid && (nextClicked || Price.touched)">
                     Please select <span *ngIf="SellRent.value==1;else ShowRent">price</span>
                     <ng-template #ShowRent>rent</ng-template>
@@ -93,7 +93,7 @@
                 </div>
                 <div class="form-group mb-3">
                   <label class="form-label">Built Area (in sqr feet)</label>
-                  <input type="text" class="form-control" [(ngModel)]="propertyView.BuiltArea" formControlName="BuiltArea">
+                  <input type="text" class="form-control" [(ngModel)]="propertyView.builtArea" formControlName="BuiltArea">
                   <div>
                     <span class="error-msg" *ngIf="BuiltArea.invalid && (nextClicked || BuiltArea.touched)">Please enter Built area!</span>
                   </div>
