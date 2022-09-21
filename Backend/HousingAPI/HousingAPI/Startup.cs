@@ -27,6 +27,7 @@ namespace HousingAPI
             services.AddDbContext<HousingDataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultString")));
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<IPropertyRepository, PropertyRepository>();
             services.AddControllers();
             services.AddCors();
             services.AddAutoMapper(typeof(Startup));
