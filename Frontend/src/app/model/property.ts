@@ -14,16 +14,14 @@ export class Property implements IPropertyBase{
     image!: string;
     carpetArea?:number;
     floorNo?:number;
-    totalFloor?:number;
+    totalFloors?:number;
     address?: string;
     address2?: string;
     security?:number;
     maintenance?:number;
     age?:string;
-    possession?:string;
-    gated?:string;
+    estPossessionOn?:Date;
+    gated?:boolean;
     mainEntrance?:string;
     description?: string;
-    postedOn?: string;
-    postedBy?: number;
 }

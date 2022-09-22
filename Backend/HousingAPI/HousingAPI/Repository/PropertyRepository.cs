@@ -41,6 +41,15 @@ namespace HousingAPI.Repository
             throw new System.NotImplementedException();
         }
 
+        public async Task<PropertyDto> GetPropertyDetails(int id)
+        {
+            var properties = await _context.Properties
+               .Include(p => p.PropertyType)
+               .Include(p => p.FurnishingType)
+               .Include(p => p.City)
+               .Where(x => x.Id== id).FirstOrDefaultAsync();
+            return _mapper.Map<PropertyDto>(properties);
+        }
     }
 }
 

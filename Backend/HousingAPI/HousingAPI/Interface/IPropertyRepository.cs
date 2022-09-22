@@ -7,6 +7,7 @@ namespace HousingAPI.Interface
     public interface IPropertyRepository
     {
         Task<IEnumerable<PropertyDto>> GetProperties(int sellRent);
+        Task<PropertyDto> GetPropertyDetails(int id);
         void AddProperty(PropertyDto propertyDto);
         void DeleteProperty(int id);
 

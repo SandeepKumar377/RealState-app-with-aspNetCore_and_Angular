@@ -18,11 +18,7 @@ export class HousingService {
   }
 
   getProperty(id:number){
-    return this.getAllProperties(1).pipe(
-      map(propertiesArray =>{
-        return propertiesArray.find(p=>p.id===id);
-      })
-    ); 
+    return this.http.get<string[]>(this.baseURL+'/property/details/'+id.toString())
   }
   
   getAllProperties(SellRent?: number): Observable<Property[]>{
@@ -46,5 +42,23 @@ export class HousingService {
       localStorage.setItem('Prop_Id','101');
       return 101;
     }
+  }
+
+  getPropertyAge(dateOfEstabilishment: Date):string{
+    const today = new Date();
+    const estDate = new Date(dateOfEstabilishment);
+    let age =today.getFullYear() - estDate.getFullYear();
+    const m= today.getMonth() - estDate.getMonth();
+    if(m<0 || (m===0 && today.getDate() < estDate.getDate()))
+    {
+      age--;
+    }
+    if (today < estDate) {
+      return '0';
+    }
+    if (age===0) {
+      return 'Less then  a year';
+    }
+    return age.toString();
   }
 }

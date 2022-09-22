@@ -23,6 +23,11 @@
         <div>
           <strong>Furnishing Type: </strong>{{property.furnishingType}}
         </div>
+        <div>
+          <strong>Available for: </strong>
+          <span *ngIf="property.sellRent == 1">Purchase</span>
+          <span *ngIf="property.sellRent == 2">Rent</span>
+        </div>
       </div>
       <div class="card-footer">
         <div class="btn-group d-flex"> 
@@ -45,7 +50,7 @@
               </div>
               <div class="heading">
                 <strong>Floor Number</strong>
-                <p>{{property.floorNo}}</p>
+                <p>{{property.floorNo}} of {{property.totalFloors}}</p>
               </div>
               <div class="heading">
                 <strong>Age of Property</strong>
@@ -53,7 +58,7 @@
               </div>
               <div class="heading">
                 <strong>Possession</strong>
-                <p>{{property.possession}}</p>
+                <p>{{property.estPossessionOn | date}}</p>
               </div>              
             </div>
             <div class="col-lg-6">
@@ -63,7 +68,8 @@
               </div>
               <div class="heading">
                 <strong>Gated Community</strong>
-                <p>{{property.gated}}</p>
+                <p *ngIf="property.gated == true">Yes</p>
+                <p *ngIf="property.gated == false">No</p>
               </div>
               <div class="heading">
                 <strong>Security Deposit</strong>
