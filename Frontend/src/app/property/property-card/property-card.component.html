@@ -11,7 +11,12 @@
     <li class="list-group-item">
       <strong>Price: </strong><span class="font-highlight">{{property.price}} USD </span>
       <strong>| Area: </strong> <span class="font-highlight">{{property.builtArea}} Sqr Feet.</span></li>
-    <li class="list-group-item">{{property.furnishingType}} <span *ngIf="property.furnishingType !== 'Unfurnished'">Furnished</span> <strong> | </strong>Ready to move</li>
+    <li class="list-group-item">{{property.furnishingType}} 
+      <span *ngIf="property.furnishingType !== 'Unfurnished'">Furnished</span> 
+      <strong> | </strong>
+      <span *ngIf="property.readyToMove">Ready To Move</span> 
+      <span *ngIf="!property.readyToMove">{{property.estPossessionOn | date}}</span> 
+    </li>
     <li *ngIf="!hideIcons" class="list-group-item">
       <a routerLink="/property-detail/{{property.id}}" class="card-link btn btn-primary" role="button"><i class="far fa-edit"></i></a>
       <a href="#" class="card-link btn btn-primary" role="button"><i class="far fa-address-book"></i></a>

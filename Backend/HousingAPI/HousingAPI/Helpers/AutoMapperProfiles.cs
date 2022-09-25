@@ -13,6 +13,7 @@ namespace HousingAPI.Helpers
                 .ForMember(x => x.CityName, x=>x.MapFrom(x=>x.City.Name))
                 .ForMember(x => x.PropertyType, x=>x.MapFrom(x=>x.PropertyType.Name))
                 .ForMember(x => x.FurnishingType, x=>x.MapFrom(x=>x.FurnishingType.Name));
+            CreateMap<PropertyType, PropertyTypeDto>();
         }
     }
 }

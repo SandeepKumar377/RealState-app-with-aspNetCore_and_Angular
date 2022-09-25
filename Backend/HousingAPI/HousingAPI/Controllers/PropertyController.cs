@@ -29,5 +29,12 @@ namespace HousingAPI.Controllers
             var property= await _propertyRepository.GetPropertyDetails(id);
             return Ok(property);
         }
+        
+        [HttpGet("propertyTypes")]
+        public async Task<IActionResult> GetPropertyTypeList()
+        {
+            var property= await _propertyRepository.GetPropertyTypes();
+            return Ok(property);
+        }
     }
 }

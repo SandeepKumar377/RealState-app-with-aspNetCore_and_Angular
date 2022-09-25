@@ -30,6 +30,12 @@ namespace HousingAPI.Repository
                 .Where(x=>x.SellRent==sellRent).ToListAsync();
             return _mapper.Map<IEnumerable<PropertyDto>>(properties);
         }
+        
+        public async Task<IEnumerable<PropertyTypeDto>> GetPropertyTypes()
+        {
+            var properties = await _context.Properties.ToListAsync();
+            return _mapper.Map<IEnumerable<PropertyTypeDto>>(properties);
+        }
 
         public void AddProperty(PropertyDto propertyDto)
         {
