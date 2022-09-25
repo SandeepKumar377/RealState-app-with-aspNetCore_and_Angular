@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { IPropertyBase } from 'src/app/model/iPropertyBase';
+import { IKeyValuePair } from 'src/app/model/iKeyValuePair';
 
 @Component({
   selector: 'app-add-property',
@@ -19,10 +20,10 @@ export class AddPropertyComponent implements OnInit {
   property= new Property();
 
   bhkType: Array<string>=['1','2','3','4'];
-  propertyTypes: Array<string>=['House','Apartment', 'Duplex'];
-  furnishTypes: Array<string>=['Fully','Semi', 'Unfurnished'];
+  cityList:IKeyValuePair[] | undefined;
+  propertyTypes: IKeyValuePair[] | undefined;
+  furnishTypes: IKeyValuePair[] | undefined;
   mainEntrance: Array<string>=['East','West', 'South', 'North'];
-  cityList!:any[];
   propertyView: IPropertyBase=
   {
     id:0,
@@ -47,9 +48,20 @@ export class AddPropertyComponent implements OnInit {
 
   ngOnInit() {
     this.CreateAddPropertyForm();
+
     this.housingService.getAllCities().subscribe(data=>{
       this.cityList=data;
       console.log("City list:",data);
+    })
+
+    this.housingService.getAllPropertyType().subscribe(data=>{
+      this.propertyTypes=data;
+      console.log("Property list:",data);
+    })
+
+    this.housingService.getAllFurnishingType().subscribe(data=>{
+      this.furnishTypes=data;
+      console.log("Furnish list:",data);
     })
   }
 
