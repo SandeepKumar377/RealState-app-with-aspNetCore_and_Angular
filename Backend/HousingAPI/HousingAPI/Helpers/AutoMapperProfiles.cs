@@ -14,6 +14,7 @@ namespace HousingAPI.Helpers
                 .ForMember(x => x.PropertyType, x=>x.MapFrom(x=>x.PropertyType.Name))
                 .ForMember(x => x.FurnishingType, x=>x.MapFrom(x=>x.FurnishingType.Name));
             CreateMap<PropertyType, PropertyTypeDto>();
+            CreateMap<FurnishingType, FurnishingTypeDto>();
         }
     }
 }

@@ -8,6 +8,7 @@ namespace HousingAPI.Interface
     {
         Task<IEnumerable<PropertyDto>> GetProperties(int sellRent);
         Task<IEnumerable<PropertyTypeDto>> GetPropertyTypes();
+        Task<IEnumerable<FurnishingTypeDto>> GetFurnishingTypes();
         Task<PropertyDto> GetPropertyDetails(int id);
         void AddProperty(PropertyDto propertyDto);
         void DeleteProperty(int id);

@@ -33,8 +33,14 @@ namespace HousingAPI.Repository
         
         public async Task<IEnumerable<PropertyTypeDto>> GetPropertyTypes()
         {
-            var properties = await _context.Properties.ToListAsync();
-            return _mapper.Map<IEnumerable<PropertyTypeDto>>(properties);
+            var propertyType = await _context.PropertyTypes.ToListAsync();
+            return _mapper.Map<IEnumerable<PropertyTypeDto>>(propertyType);
+        }
+        
+        public async Task<IEnumerable<FurnishingTypeDto>> GetFurnishingTypes()
+        {
+            var FTypes = await _context.FurnishingTypes.ToListAsync();
+            return _mapper.Map<IEnumerable<FurnishingTypeDto>>(FTypes);
         }
 
         public void AddProperty(PropertyDto propertyDto)
