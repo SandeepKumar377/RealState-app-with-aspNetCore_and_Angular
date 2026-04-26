@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { UserRegister } from 'src/app/model/user';
 import { AlertyfyService } from 'src/app/services/alertyfy.service';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
@@ -11,14 +11,14 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 })
 export class UserRegisterComponent implements OnInit {
 
-  registrationForm!: FormGroup;
+  registrationForm!: UntypedFormGroup;
 
   user!:UserRegister;
 
   userSubmitted!:boolean;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private authService: AuthServiceService,
     private alertyfy: AlertyfyService
   ) { }
@@ -38,22 +38,22 @@ export class UserRegisterComponent implements OnInit {
   }
 
   get userName(){
-    return this.registrationForm.get('userName') as FormControl;
+    return this.registrationForm.get('userName') as UntypedFormControl;
   }
   get mobile(){
-    return this.registrationForm.get('mobile') as FormControl;
+    return this.registrationForm.get('mobile') as UntypedFormControl;
   }
   get email(){
-    return this.registrationForm.get('email') as FormControl;
+    return this.registrationForm.get('email') as UntypedFormControl;
   }
   get password(){
-    return this.registrationForm.get('password') as FormControl;
+    return this.registrationForm.get('password') as UntypedFormControl;
   }
   get confirmPassword(){
-    return this.registrationForm.get('confirmPassword') as FormControl;
+    return this.registrationForm.get('confirmPassword') as UntypedFormControl;
   }
 
-  passwordMatchingValidator(fg: FormGroup): Validators{
+  passwordMatchingValidator(fg: UntypedFormGroup): Validators{
     return fg.get('password')!.value === fg.get('confirmPassword')!.value ? 'null': {notmatched: true};
     }
     onSubmit(){

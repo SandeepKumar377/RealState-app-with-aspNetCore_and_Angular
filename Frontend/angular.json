@@ -103,6 +103,5 @@
         }
       }
     }
-  },
-  "defaultProject": "realState-app-with-aspNetCore"
+  }
 }

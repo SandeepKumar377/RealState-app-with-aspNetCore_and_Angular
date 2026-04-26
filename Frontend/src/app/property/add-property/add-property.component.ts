@@ -2,7 +2,7 @@ import { AlertyfyService } from 'src/app/services/alertyfy.service';
 import { HousingService } from 'src/app/services/housing.service';
 import { Property } from './../../model/property';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { IPropertyBase } from 'src/app/model/iPropertyBase';
@@ -15,7 +15,7 @@ import { IKeyValuePair } from 'src/app/model/iKeyValuePair';
 })
 export class AddPropertyComponent implements OnInit {
   @ViewChild('formTabs') formTabs!: TabsetComponent;
-  addPropertyForm!: FormGroup;
+  addPropertyForm!: UntypedFormGroup;
   nextClicked!: boolean;
   property= new Property();
 
@@ -40,7 +40,7 @@ export class AddPropertyComponent implements OnInit {
   };
 
   constructor(
-    private fb: FormBuilder, 
+    private fb: UntypedFormBuilder, 
     private router: Router,
     private housingService: HousingService,
     private alertify: AlertyfyService
@@ -101,82 +101,82 @@ export class AddPropertyComponent implements OnInit {
 
   //#region <Getter Methods>
     get BasicInfo(){
-      return this.addPropertyForm.get('BasicInfo') as FormGroup;
+      return this.addPropertyForm.get('BasicInfo') as UntypedFormGroup;
     }
     get PriceInfo(){
-      return this.addPropertyForm.get('PriceInfo') as FormGroup;
+      return this.addPropertyForm.get('PriceInfo') as UntypedFormGroup;
     }
     get AddressInfo(){
-      return this.addPropertyForm.get('AddressInfo') as FormGroup;
+      return this.addPropertyForm.get('AddressInfo') as UntypedFormGroup;
     }
     get OtherInfo(){
-      return this.addPropertyForm.get('OtherInfo') as FormGroup;
+      return this.addPropertyForm.get('OtherInfo') as UntypedFormGroup;
     }
   //#endregion
 
   //#region <Form controls>
     get SellRent(){
-      return this.BasicInfo.get('SellRent') as FormControl;
+      return this.BasicInfo.get('SellRent') as UntypedFormControl;
     }
     get BHK(){
-      return this.BasicInfo.get('BHK') as FormControl;
+      return this.BasicInfo.get('BHK') as UntypedFormControl;
     }
     get PType(){
-      return this.BasicInfo.get('PType') as FormControl;
+      return this.BasicInfo.get('PType') as UntypedFormControl;
     }
     get FType(){
-      return this.BasicInfo.get('FType') as FormControl;
+      return this.BasicInfo.get('FType') as UntypedFormControl;
     }
     get Name(){
-      return this.BasicInfo.get('Name') as FormControl;
+      return this.BasicInfo.get('Name') as UntypedFormControl;
     }
     get City(){
-      return this.BasicInfo.get('City') as FormControl;
+      return this.BasicInfo.get('City') as UntypedFormControl;
     }
     get Price(){
-      return this.PriceInfo.get('Price') as FormControl;
+      return this.PriceInfo.get('Price') as UntypedFormControl;
     }
     get Security(){
-      return this.PriceInfo.get('Security') as FormControl;
+      return this.PriceInfo.get('Security') as UntypedFormControl;
     }
     get Maintenance(){
-      return this.PriceInfo.get('Maintenance') as FormControl;
+      return this.PriceInfo.get('Maintenance') as UntypedFormControl;
     }
     get BuiltArea(){
-      return this.PriceInfo.get('BuiltArea') as FormControl;
+      return this.PriceInfo.get('BuiltArea') as UntypedFormControl;
     }
     get CarpetArea(){
-      return this.PriceInfo.get('CarpetArea') as FormControl;
+      return this.PriceInfo.get('CarpetArea') as UntypedFormControl;
     }     
     get FloorNo(){
-      return this.AddressInfo.get('FloorNo') as FormControl;
+      return this.AddressInfo.get('FloorNo') as UntypedFormControl;
     }
     get TotalFloor(){
-      return this.AddressInfo.get('TotalFloor') as FormControl;
+      return this.AddressInfo.get('TotalFloor') as UntypedFormControl;
     }
     get Address(){
-      return this.AddressInfo.get('Address') as FormControl;
+      return this.AddressInfo.get('Address') as UntypedFormControl;
     }
     get LandMark(){
-      return this.AddressInfo.get('LandMark') as FormControl;
+      return this.AddressInfo.get('LandMark') as UntypedFormControl;
     }
     get RTM(){
-      return this.OtherInfo.get('RTM') as FormControl;
+      return this.OtherInfo.get('RTM') as UntypedFormControl;
     }
     get Possession(){
-      return this.OtherInfo.get('Possession') as FormControl;
+      return this.OtherInfo.get('Possession') as UntypedFormControl;
     }
     get AOP(){
-      return this.OtherInfo.get('AOP') as FormControl;
+      return this.OtherInfo.get('AOP') as UntypedFormControl;
     }
     get Gated(){
-      return this.OtherInfo.get('Gated') as FormControl;
+      return this.OtherInfo.get('Gated') as UntypedFormControl;
     }
     get MainEntrance(){
-      return this.OtherInfo.get('MainEntrance') as FormControl;
+      return this.OtherInfo.get('MainEntrance') as UntypedFormControl;
     }
     get Description(){
-      return this.OtherInfo.get('Description') as FormControl;
+      return this.OtherInfo.get('Description') as UntypedFormControl;
     }
     //#endregion
   
